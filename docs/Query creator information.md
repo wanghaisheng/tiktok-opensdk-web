@@ -1,3 +1,6 @@
+https://developers.tiktok.com/doc/content-posting-api-reference-direct-post/
+
+
 This API returns profile and permission information of the current user.
 
 When rendering the Export to TikTok page, your app must invoke the API and use the latest creator information returned to display the account's available privacy level options and video interaction settings.
@@ -143,3 +146,24 @@ A unique identifier for the execution of this request. Different users have diff
 
 Note: Every field in the response.data (excluding max_video_post_duration_sec) must be displayed on your app's Export screen to the user. This will indicate the TikTok account to which the post will be published and provide creators with the available privacy settings they can choose from. Learn more about the UX guidelines here.
 
+  
+  Example
+200 OK
+
+{
+   "data":{
+      "creator_avatar_url": "https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/8d5740ac3844be417beeacd0df75aef1",
+      "creator_username": "tiktok",
+      "creator_nickname": "TikTok Official",
+      "privacy_level_options": ["PUBLIC_TO_EVERYONE", "MUTUAL_FOLLOW_FRIENDS", "SELF_ONLY"] 
+      "comment_disabled": false,
+      "duet_disabled": false,
+      "stitch_disabled": true,
+      "max_video_post_duration_sec": 300
+   },
+    "error": {
+         "code": "ok",
+         "message": "",
+         "log_id": "202210112248442CB9319E1FB30C1073F3"
+     }
+}
