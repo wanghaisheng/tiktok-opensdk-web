@@ -1,0 +1,195 @@
+#https://developers.tiktok.com/doc/oauth-user-access-token-management
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TikTok API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v2/oauth/token/": {
+      "post": {
+        "summary": "Fetch an access token using an authorization code",
+        "parameters": [
+          {
+            "name": "client_key",
+            "in": "formData",
+            "description": "The unique identification key provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "description": "The unique identification secret provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "formData",
+            "description": "The authorization code from the web, iOS, or Android authorization callback. The value should be URL decoded.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "Its value should always be set as authorization_code.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "formData",
+            "description": "Its value must be the same as the redirect_uri used for requesting code.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string"
+                },
+                "expires_in": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "open_id": {
+                  "type": "string"
+                },
+                "refresh_expires_in": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "refresh_token": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "token_type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response"
+          }
+        }
+      }
+    },
+    "/v2/oauth/token/refresh/": {
+      "post": {
+        "summary": "Refresh an access token using a refresh token",
+        "parameters": [
+          {
+            "name": "client_key",
+            "in": "formData",
+            "description": "The unique identification key provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "description": "The unique identification secret provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "Its value should always be set as refresh_token.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "refresh_token",
+            "in": "formData",
+            "description": "The user's refresh token.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string"
+                },
+                "expires_in": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "open_id": {
+                  "type": "string"
+                },
+                "refresh_expires_in": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "refresh_token": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "token_type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response"
+          }
+        }
+      }
+    },
+    "/v2/oauth/revoke/": {
+      "post": {
+        "summary": "Revoke access",
+        "parameters": [
+          {
+            "name": "client_key",
+            "in": "formData",
+            "description": "The unique identification key provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "description": "The unique identification secret provisioned to the partner.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "The access_token that bears the authorization of the TikTok user.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "description": "Error response"
+          }
+        }
+      }
+    }
+  }
+}
