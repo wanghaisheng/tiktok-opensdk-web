@@ -9,7 +9,12 @@ insprided from https://github.com/tiktok/tiktok-business-api-sdk/tree/main/pytho
 
 ## gen swagger json from doc description https://developers.tiktok.com/
 
+
+
 ## gen python java rust sdk from swagger json
+
+https://github.com/swagger-api/swagger-codegen
+
 
 
 
