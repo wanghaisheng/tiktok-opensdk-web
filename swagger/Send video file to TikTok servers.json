@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TikTok Video Upload API",
+    "version": "1.0.0",
+    "description": "API for sending video files to TikTok servers for processing"
+  },
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/video/": {
+      "put": {
+        "summary": "Send video file to TikTok servers",
+        "description": "Send the video file to TikTok servers for processing",
+        "parameters": [
+          {
+            "name": "upload_id",
+            "in": "query",
+            "description": "The upload ID obtained from the initialization request",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "upload_token",
+            "in": "query",
+            "description": "The upload token obtained from the initialization request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Video upload successful",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid credentials"
+          },
+          "403": {
+            "description": "Forbidden - Insufficient permissions"
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded"
+          },
+          "5xx": {
+            "description": "Server error - Try again later"
+          }
+        }
+      }
+    }
+  }
+}
