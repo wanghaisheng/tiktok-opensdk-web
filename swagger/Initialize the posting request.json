@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TikTok Posting API",
+    "version": "1.0.0",
+    "description": "API documentation for TikTok posting requests"
+  },
+  "servers": [
+    {
+      "url": "https://open.tiktokapis.com"
+    }
+  ],
+  "paths": {
+    "/v2/post/publish/video/init/": {
+      "post": {
+        "summary": "Initialize the posting request",
+        "operationId": "initializePostingRequest",
+        "tags": [
+          "posting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5xx": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostingRequest": {
+        "type": "object",
+        "properties": {
+          "post_info": {
+            "$ref": "#/components/schemas/PostInfo"
+          },
+          "source_info": {
+            "$ref": "#/components/schemas/SourceInfo"
+          }
+        }
+      },
+      "PostInfo": {
+        "type": "object",
+        "properties": {
+          "privacy_level": {
+            "type": "string",
+            "enum": [
+              "PUBLIC_TO_EVERYONE",
+              "MUTUAL_FOLLOW_FRIENDS",
+              "FOLLOWER_OF_CREATOR",
+              "SELF_ONLY"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "disable_duet": {
+            "type": "boolean"
+          },
+          "disable_stitch": {
+            "type": "boolean"
+          },
+          "disable_comment": {
+            "type": "boolean"
+          },
+          "video_cover_timestamp_ms": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "SourceInfo": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "PULL_FROM_URL",
+              "FILE_UPLOAD"
+            ]
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "video_size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "chunk_size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total_chunk_count": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PostingResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "publish_id": {
+                "type": "string"
+              },
+              "upload_url": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "log_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
