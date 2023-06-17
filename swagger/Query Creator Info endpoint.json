@@ -1,0 +1,191 @@
+#https://developers.tiktok.com/doc/content-posting-api-get-started/
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TikTok API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v2/post/publish/creator_info/query/": {
+      "post": {
+        "summary": "Query creator information",
+        "operationId": "queryCreatorInfo",
+        "tags": ["Creator"],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatorInfoQueryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorInfoQueryResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorized"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRateLimitExceeded"
+                }
+              }
+            }
+          },
+          "5xx": {
+            "description": "TikTok server or network error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreatorInfoQueryRequest": {
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "description": "The token that bears the authorization of the TikTok user",
+            "example": "Bearer {$UserAccessToken}"
+          },
+          "Content-Type": {
+            "type": "string",
+            "description": "The content format of the body of this HTTP request",
+            "example": "application/json; charset=UTF-8"
+          }
+        },
+        "required": ["Authorization", "Content-Type"]
+      },
+      "CreatorInfoQueryResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "creator_avatar_url": {
+                "type": "string",
+                "description": "The URL of the TikTok creator's avatar with a TTL of 2 hours"
+              },
+              "creator_username": {
+                "type": "string",
+                "description": "The unique ID of the TikTok creator"
+              },
+              "creator_nickname": {
+                "type": "string",
+                "description": "The nickname of the TikTok creator"
+              },
+              "privacy_level_options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The available privacy level options for the TikTok creator account"
+              },
+              "comment_disabled": {
+                "type": "boolean",
+                "description": "Indicates if the creator sets comment interaction to 'No one' in their privacy setting"
+              },
+              "duet_disabled": {
+                "type": "boolean",
+                "description": "Indicates if the creator account is private or they set the Duet interaction to 'No one' in their privacy setting"
+              },
+              "stitch_disabled": {
+                "type": "boolean",
+                "description": "Indicates if the creator account is private or they set the Stitch interaction to 'No one' in their privacy setting"
+              },
+              "max_video_post_duration_sec": {
+                "type": "integer",
+                "description": "The longest video duration in seconds that the TikTok creator can post"
+              }
+            },
+            "required": ["creator_avatar_url", "creator_username", "creator_nickname", "privacy_level_options", "comment_disabled", "duet_disabled", "stitch_disabled", "max_video_post_duration_sec"]
+          }
+        },
+        "required": ["data"]
+      },
+      "ErrorUnauthorized": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human readable description of the error"
+          },
+          "logid": {
+            "type": "string",
+            "description": "Unique identifier for the execution of the request"
+          }
+        },
+        "required": ["error"]
+      },
+      "ErrorRateLimitExceeded": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human readable description of the error"
+          },
+          "logid": {
+            "type": "string",
+            "description": "Unique identifier for the execution of the request"
+          }
+        },
+        "required": ["error"]
+      },
+      "ErrorServer": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human readable description of the error"
+          },
+          "logid": {
+            "type": "string",
+            "description": "Unique identifier for the execution of the request"
+          }
+        },
+        "required": ["error"]
+      }
+    }
+  }
+}
