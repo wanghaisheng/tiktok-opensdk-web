@@ -9,13 +9,33 @@ insprided from https://github.com/tiktok/tiktok-business-api-sdk/tree/main/pytho
 
 ## gen swagger json from doc description https://developers.tiktok.com/
 
+years ago, we need manually input and edit,    
+
+now chatgpt can help this 
 
 
 ## gen python java rust sdk from swagger json
 
 https://github.com/swagger-api/swagger-codegen
 
+The openapi-generator-cli tool supports generating code for a wide range of programming languages. Here are some of the programming languages that can be generated using openapi-generator-cli:
 
+Java     
+JavaScript     
+TypeScript. 
+Python
+Ruby
+PHP
+C#
+Go
+Swift
+Kotlin
+Rust
+Scala
+Dart
+Objective-C
+PowerShell
+Shell
 
 
 
