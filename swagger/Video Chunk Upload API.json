@@ -1,0 +1,124 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Video Chunk Upload API",
+    "description": "API for uploading video in chunks",
+    "version": "1.0"
+  },
+  "paths": {
+    "/v2/video/upload": {
+      "put": {
+        "summary": "Upload video chunk",
+        "description": "Uploads a chunk of a video file.",
+        "parameters": [
+          {
+            "name": "UPLOAD_URL",
+            "in": "path",
+            "description": "The URL for uploading the video chunk.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "MIME_TYPE",
+            "in": "header",
+            "description": "The MIME type of the video file.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Length",
+            "in": "header",
+            "description": "The byte size of this chunk.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Content-Range",
+            "in": "header",
+            "description": "The byte range of this chunk in the entire video file.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The binary file data of the video chunk.",
+            "required": true,
+            "type": "string",
+            "format": "binary"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/UploadResponse"
+            }
+          },
+          "206": {
+            "description": "Partial Content",
+            "schema": {
+              "$ref": "#/definitions/UploadResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "5xx": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UploadResponse": {
+      "type": "object",
+      "properties": {
+        "uploaded_bytes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": ["uploaded_bytes"]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["code", "message"]
+    }
+  }
+}
