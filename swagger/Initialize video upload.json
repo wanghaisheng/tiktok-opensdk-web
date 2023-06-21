@@ -1,0 +1,178 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Video Upload API",
+    "description": "API for initializing video upload",
+    "version": "1.0"
+  },
+  "paths": {
+    "/v2/post/publish/inbox/video/init/": {
+      "post": {
+        "summary": "Initialize video upload",
+        "description": "To upload a video to a TikTok user's account, the first step is to initialize the upload.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The token that bears the authorization of the TikTok user, which is obtained through /oauth/access_token/.",
+            "required": true,
+            "type": "string",
+            "format": "Bearer {$UserAccessToken}"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "The content format of the body of this HTTP request.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "application/json; charset=UTF-8"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoInitRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/VideoInitResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "5xx": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "VideoInitRequest": {
+      "type": "object",
+      "properties": {
+        "source_info": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "enum": ["FILE_UPLOAD", "PULL_FROM_URL"]
+            },
+            "video_size": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "chunk_size": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "total_chunk_count": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "video_url": {
+              "type": "string"
+            }
+          },
+          "required": ["source"],
+          "oneOf": [
+            {
+              "required": ["video_size", "chunk_size", "total_chunk_count"]
+            },
+            {
+              "required": ["video_url"]
+            }
+          ]
+        }
+      },
+      "required": ["source_info"]
+    },
+    "VideoInitResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "publish_id": {
+              "type": "string"
+            },
+            "upload_url": {
+              "type": "string"
+            }
+          },
+          "required": ["publish_id"]
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "log_id": {
+              "type": "string"
+            }
+          },
+          "required": ["code"]
+        }
+      },
+      "required": ["data", "error"]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "log_id": {
+          "type": "string"
+        }
+      },
+      "required": ["code"]
+    }
+  }
+}
