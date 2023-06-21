@@ -1,0 +1,126 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Cancel Pull From URL API",
+    "description": "API for canceling ongoing pull from URL tasks",
+    "version": "1.0"
+  },
+  "paths": {
+    "/v2/post/transmission/cancel/": {
+      "post": {
+        "summary": "Cancel ongoing pull from URL tasks",
+        "description": "Cancels ongoing pull from URL tasks.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Access token for authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Media type of the request payload",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "application/json; charset=UTF-8"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "The request payload for canceling the task",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/CancelRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CancelResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Rate Limit Exceeded",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "5xx": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CancelRequest": {
+      "type": "object",
+      "properties": {
+        "publish_id": {
+          "type": "string"
+        }
+      },
+      "required": ["publish_id"]
+    },
+    "CancelResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorObject"
+        }
+      }
+    },
+    "ErrorObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "log_id": {
+          "type": "string"
+        }
+      },
+      "required": ["code", "message", "log_id"]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorObject"
+        }
+      }
+    }
+  }
+}
