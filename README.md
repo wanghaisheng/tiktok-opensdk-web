@@ -75,7 +75,7 @@ Java, Python and Javascript are among the most popular languages for TikTok Open
 
 ## Prerequisites
   1.   [Register your app](https://developers.tiktok.com/doc/getting-started-create-an-app)
-  4.   [Obtain authorization](https://ads.tiktok.com/marketing_api/docs?id=1738373141733378)
+  4.   [Manage User Access Tokens with OAuth v2](https://developers.tiktok.com/doc/login-kit-manage-user-access-tokens)
   5.   [Obtain authentication](https://ads.tiktok.com/marketing_api/docs?id=1738373164380162)
 
 ## Integration with different lanauage SDK
