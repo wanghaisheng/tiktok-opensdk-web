@@ -7,6 +7,30 @@ https://developers.tiktok.com/
 
 insprided from https://github.com/tiktok/tiktok-business-api-sdk/tree/main/python_sdk,
 
+## ios/android sdk
+
+official  sdk for android and ios is here
+
+https://github.com/tiktok/tiktok-opensdk-android
+
+https://github.com/tiktok/tiktok-opensdk-ios
+
+but there is none sdk for web, especially we want to run our code on remote server or integrate tiktok openapi with our BS applications
+
+
+##  methology
+
+
+
+Comprehensive collection of client libraries that enable our developers to build software to integrate with [Tiktok OpenAPI](https://developers.tiktok.com/) faster and in a more standardized way.
+
+* First we use chatgpt to convert offical documentation into swagger json file 
+
+* We generate different programming language  packageautomatically by the Swagger Codegen project
+
+
+
+
 ## gen swagger json from doc description https://developers.tiktok.com/
 
 years ago, we need manually input and edit,    
