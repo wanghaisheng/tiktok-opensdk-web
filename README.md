@@ -32,7 +32,9 @@ Comprehensive collection of client libraries that enable our developers to build
 
 
 
-## gen swagger json from doc description https://developers.tiktok.com/
+## gen swagger json from doc description 
+
+https://developers.tiktok.com/
 
 years ago, we need manually input and edit,    
 
