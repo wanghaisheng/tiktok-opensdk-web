@@ -5,7 +5,6 @@ https://developers.tiktok.com/
 
 
 
-insprided from https://github.com/tiktok/tiktok-business-api-sdk/tree/main/python_sdk,
 
 ## ios/android sdk
 
@@ -21,6 +20,7 @@ but there is none sdk for web, especially we want to run our code on remote serv
 ##  methology
 
 
+insprided from https://github.com/tiktok/tiktok-business-api-sdk/tree/main/python_sdk,
 
 Comprehensive collection of client libraries that enable our developers to build software to integrate with [Tiktok OpenAPI](https://developers.tiktok.com/) faster and in a more standardized way.
 
