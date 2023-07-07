@@ -1,6 +1,6 @@
 # tiktok-opensdk-web
 
-
+https://github.com/sns-sdks/python-tiktok
 
 # Introduction
 An SDK built to facilitate application development to integrate with TikTok developer API.
