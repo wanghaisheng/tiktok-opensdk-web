@@ -1,0 +1,62 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TikTok Authorization API",
+    "version": "1.0.0",
+    "description": "API for initiating the redirect to TikTok's authorization page"
+  },
+  "host": "www.tiktok.com",
+  "basePath": "/v2",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/auth/authorize": {
+      "get": {
+        "summary": "Initiate redirect to TikTok's authorization page",
+        "parameters": [
+          {
+            "name": "client_key",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "The unique identification key provisioned to the partner"
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "A comma-separated string of authorization scope(s)"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "The redirect URI that you requested for your application"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "The state parameter used to maintain the state of the request and callback"
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "This value should always be set to 'code'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Redirect to TikTok's authorization page"
+          }
+        }
+      }
+    }
+  }
+}
