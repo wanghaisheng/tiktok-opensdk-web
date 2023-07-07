@@ -47,20 +47,20 @@ The openapi-generator-cli tool supports generating code for a wide range of prog
 
 *　Java     
 *　JavaScript     
-*　TypeScript. 
-*　Python
-*　Ruby
-*　PHP
-*　C#
-*　Go
-*　Swift
-*　Kotlin
-*　Rust
-*　Scala
-*　Dart
-*　Objective-C
-*　PowerShell
-*　Shell
+*　TypeScript.     
+*　Python    
+*　Ruby     
+*　PHP     
+*　C#     
+*　Go     
+*　Swift     
+*　Kotlin     
+*　Rust     
+*　Scala     
+*　Dart     
+*　Objective-C     
+*　PowerShell     
+*　Shell     
 
 
 
