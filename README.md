@@ -1,10 +1,11 @@
 # tiktok-opensdk-web
+
+
+
+# Introduction
 An SDK built to facilitate application development to integrate with TikTok developer API.
 
 https://developers.tiktok.com/
-
-
-
 
 ## ios/android sdk
 
@@ -44,51 +45,43 @@ https://github.com/swagger-api/swagger-codegen
 
 The openapi-generator-cli tool supports generating code for a wide range of programming languages. Here are some of the programming languages that can be generated using openapi-generator-cli:
 
-Java     
-JavaScript     
-TypeScript. 
-Python
-Ruby
-PHP
-C#
-Go
-Swift
-Kotlin
-Rust
-Scala
-Dart
-Objective-C
-PowerShell
-Shell
+*　Java     
+*　JavaScript     
+*　TypeScript. 
+*　Python
+*　Ruby
+*　PHP
+*　C#
+*　Go
+*　Swift
+*　Kotlin
+*　Rust
+*　Scala
+*　Dart
+*　Objective-C
+*　PowerShell
+*　Shell
 
 
 
-# TikTok developer API SDK
-
-[![License](https://img.shields.io/badge/License-Tiktok%20-blue.svg?style=flat-square)](https://github.com/tiktok/tiktok-business-api-sdk/edit/main/LICENSE.md)
-
-# Introduction
-The [TikTok developer API SDK](https://ads.tiktok.com/marketing_api/docs?id=1764231376750658&rid=542rk6sm9jl) is a 
-comprehensive suite of client libraries that can help our developers and partners to integrate with [TikTok API for Business](https://ads.tiktok.com/marketing_api/) 
-easily and faster in a standardized way. It is the ultimate solution for developers looking to streamline the integration process and enhance productivity. 
-Our SDK, launching in phases, includes APIs for Authentication, Campaign Creation, Reporting, Business Center and more.
-For details, please refer to [this page](https://ads.tiktok.com/marketing_api/docs?id=1764231376750658&rid=542rk6sm9jl).
+# how to use 
 
 ## Quick Start
-Java, Python and Javascript are among the most popular languages for TikTok business third-party developers. The TikTok Business API SDK is a code package that provides an interface between your application and Tiktok's business APIs for these three languages. This tutorial provides the basic knowledge needed to access to our SDK and includes sample code for your reference.
+Java, Python and Javascript are among the most popular languages for TikTok OpenAPI third-party developers. The TikTok OpenAPI  SDK is a code package that provides an interface between your application and Tiktok's  OpenAPI for these three languages. This tutorial provides the basic knowledge needed to access to our SDK and includes sample code for your reference.
 
 ## Version
 
 - API version: 0.1.0 Beta (in Beta Test)
 
 ## Prerequisites
-  1.   [Create a TikTok For Business account](https://ads.tiktok.com/marketing_api/docs?id=1738855099573250)
-  2.   [Register as a developer](https://ads.tiktok.com/marketing_api/docs?id=1738855176671234)
-  3.   [Create a developer app](https://ads.tiktok.com/marketing_api/docs?id=1738855242728450)
+  1.   [Register your app](https://developers.tiktok.com/doc/getting-started-create-an-app)
   4.   [Obtain authorization](https://ads.tiktok.com/marketing_api/docs?id=1738373141733378)
   5.   [Obtain authentication](https://ads.tiktok.com/marketing_api/docs?id=1738373164380162)
 
-## Integration with Java SDK
+## Integration with different lanauage SDK
+
+
+### Integration with Java SDK
 
 #### Version requirements
 
