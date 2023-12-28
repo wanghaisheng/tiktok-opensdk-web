@@ -32,6 +32,13 @@ Comprehensive collection of client libraries that enable our developers to build
 
 
 
+https://github.com/OpenAPITools/openapi-generator
+
+
+
+
+
+
 ## gen swagger json from doc description 
 
 https://developers.tiktok.com/
